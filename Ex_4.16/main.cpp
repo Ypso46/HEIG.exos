@@ -1,6 +1,7 @@
 #include <iostream>
 
-void syracuse(int x, int& c);
+void syracuseA(int x);
+void syracuseB(int x, int& c);
 
 static int count = 1;
 
@@ -18,15 +19,21 @@ int main() {
         std::cin >> userInput;
     }
 
-    for (int i = 1; i <= userInput; ++i) {
-        syracuse(i, count);
-    }
-    std::cout << "Le nombre d'itérations nécessaires pour arriver à 1 est de " << count << std::endl;
+
+
+    //Part B
+//    for (int i = 1; i <= userInput; ++i) {
+//        syracuseB(i, count);
+//    }
+
 
     return 0;
 }
 
-void syracuse(int x, int& c) {
+void syracuseA(int x) {
+
+}
+void syracuseB(int x, int& c) {
     while (x != 1) {
         if (x % 2 == 0) {
             x /= 2;
@@ -37,4 +44,5 @@ void syracuse(int x, int& c) {
             c++;
         }
     }
+    std::cout << "Le nombre d'itérations nécessaires pour arriver à 1 est de " << count << std::endl;
 }
