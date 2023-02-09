@@ -1,9 +1,8 @@
 #include <iostream>
 
-void syracuseA(int x);
-void syracuseB(int x);
+unsigned int syracuse(unsigned int x, bool affichage);
 
-static int count = 1;
+static int count = 0;
 
 int main() {
 
@@ -18,42 +17,25 @@ int main() {
         std::cin >> userInput;
     }
 
-    //Part A
-    //syracuseA(29);
+    syracuse(userInput, false);
 
-    //Part B
-    syracuseB(10);
-
-
-    return 0;
+    return EXIT_SUCCESS;
 }
 
-void syracuseA(int x) {
+unsigned int syracuse(unsigned int x, bool affichage) {
 
     std::cout << "Suite de Syracuse pour n = " << x << std::endl;
-    while (x != 1) {
+    unsigned int temp = x;
+    while (x > 1) {
         if (x % 2 == 0) {
             x /= 2;
-            ++count;
-        } else if (x % 2 != 0) {
-            x *= 3;
-            x += 1;
-            ++count;
+        } else {
+            x = x * 3 + 1;
         }
-        std::cout << x << std::endl;
-    }
-    std::cout << "Suite terminée en " << count << " itérations." << std::endl;
-}
-void syracuseB(int x) {
-    while (x != 0) {
-        if (x % 2 == 0) {
-            x /= 2;
-            ++count;
-        } else if (x % 2 != 0) {
-            x *= 3;
-            x += 1;
-            ++count;
+        ++count;
+        if (affichage) {
+            std::cout << temp << std::endl;
         }
-        std::cout << "Nombre d'itération pour n = " << count << " : " << std::endl;
     }
+
 }
