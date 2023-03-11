@@ -2,11 +2,9 @@
 
 unsigned int syracuse(unsigned int x, bool affichage);
 
-static int count = 0;
-
 int main() {
 
-    int userInput = 0;
+    unsigned int userInput = 0;
     std::cout << "Entrez un nombre entier entre 1 et 10'000 : " << std::endl;
     std::cin >> userInput;
 
@@ -17,25 +15,28 @@ int main() {
         std::cin >> userInput;
     }
 
-    syracuse(userInput, false);
+    for (unsigned int i = 1; i <= userInput; ++i) {
+        std::cout << "Nombre d'itération pour n = " << i << " : " << syracuse(i, false) << std::endl;
+    }
 
     return EXIT_SUCCESS;
 }
 
+//TODO refaire une fonction pour partie A, virer l'affichage part B
 unsigned int syracuse(unsigned int x, bool affichage) {
-
-    std::cout << "Suite de Syracuse pour n = " << x << std::endl;
+    int count = 0;
     unsigned int temp = x;
-    while (x > 1) {
-        if (x % 2 == 0) {
-            x /= 2;
+
+    while (temp > 1) {
+        if (temp % 2 == 0) {
+            temp = temp / 2;
         } else {
-            x = x * 3 + 1;
+            temp = temp * 3 + 1;
         }
-        ++count;
         if (affichage) {
             std::cout << temp << std::endl;
         }
+        count++;
     }
-
+    return count;
 }
